@@ -1,0 +1,29 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#grad)"/>
+  
+  <!-- Title -->
+  <text x="600" y="260" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="white" text-anchor="middle" letter-spacing="-1">
+    Micro-Interactions Library
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="330" font-family="Arial, sans-serif" font-size="32" font-weight="500" fill="white" text-anchor="middle" opacity="0.95">
+    15 Beautiful Copy-Paste Components
+  </text>
+  
+  <!-- Badge background -->
+  <rect x="440" y="370" width="320" height="60" rx="30" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2"/>
+  
+  <!-- Badge text -->
+  <text x="600" y="408" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="white" text-anchor="middle">
+    Next.js 14 + TypeScript
+  </text>
+</svg>

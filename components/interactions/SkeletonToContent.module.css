@@ -1,0 +1,439 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Variant Wrapper - provides smooth height transitions */
+.variantWrapper {
+  width: 100%;
+  transition: height var(--duration-medium) ease;
+}
+
+/* Wrapper transition for smooth height changes */
+.cardWrapper,
+.listWrapper,
+.profileWrapper {
+  transition: height var(--duration-medium) ease,
+    min-height var(--duration-medium) ease;
+}
+
+/* Common Skeleton Styles */
+.skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity var(--duration-medium) ease;
+}
+
+.skeleton.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.skeletonBar,
+.skeletonCircle,
+.skeletonAvatar,
+.skeletonImage {
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 0%,
+    var(--color-surface) 50%,
+    var(--color-border) 100%
+  );
+  background-size: 200% 100%;
+  animation: pulse 1.5s ease-in-out infinite;
+  will-change: background-position;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 200% 0;
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    background-position: -200% 0;
+    opacity: 0.5;
+  }
+}
+
+/* Content Styles */
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity var(--duration-medium) ease;
+}
+
+.content.visible {
+  opacity: 1;
+}
+
+/* Card Variant */
+.cardWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.skeleton.card {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.skeletonImage {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-md);
+}
+
+.skeletonText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.skeletonBar {
+  height: 12px;
+  border-radius: var(--radius-sm);
+}
+
+.skeletonBar.title {
+  width: 80%;
+  height: 14px;
+}
+
+.skeletonBar.line1 {
+  width: 100%;
+}
+
+.skeletonBar.line2 {
+  width: 60%;
+}
+
+.content.card {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contentImage {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.gradientPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.contentText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contentTitle {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  animation: fadeInStagger 0.5s ease forwards;
+  animation-delay: 0ms;
+}
+
+.contentDescription {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+  animation: fadeInStagger 0.5s ease forwards;
+  animation-delay: 50ms;
+}
+
+/* List Variant */
+.listWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.skeleton.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.skeletonListItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.skeletonCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.content.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInStagger 0.5s ease forwards;
+}
+
+.listIcon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+}
+
+.listItem span {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+/* Profile Variant */
+.profileWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 140px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.skeleton.profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.skeletonAvatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeletonProfileText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.skeletonBar.name {
+  width: 120px;
+  height: 14px;
+}
+
+.skeletonBar.bio {
+  width: 160px;
+  height: 10px;
+}
+
+.content.profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: fadeInStagger 0.5s ease forwards;
+  animation-delay: 0ms;
+}
+
+.avatarText {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: white;
+}
+
+.profileText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.profileName {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  animation: fadeInStagger 0.5s ease forwards;
+  animation-delay: 50ms;
+}
+
+.profileBio {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  animation: fadeInStagger 0.5s ease forwards;
+  animation-delay: 100ms;
+}
+
+/* Fade in animation with stagger */
+@keyframes fadeInStagger {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.replayButton {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-base) ease;
+}
+
+.replayButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.replayButton:active {
+  transform: scale(0.98);
+}
+
+.variantSelector {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.variantButton {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-base) ease;
+}
+
+.variantButton:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text-primary);
+}
+
+.variantButton.active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .variantWrapper,
+  .cardWrapper,
+  .listWrapper,
+  .profileWrapper {
+    transition: none;
+  }
+
+  .skeleton,
+  .content,
+  .listItem,
+  .contentTitle,
+  .contentDescription,
+  .avatar,
+  .profileName,
+  .profileBio {
+    animation: none;
+    transition: opacity var(--duration-fast) ease;
+  }
+
+  .skeletonBar,
+  .skeletonCircle,
+  .skeletonAvatar,
+  .skeletonImage {
+    animation: none;
+    opacity: 0.6;
+  }
+
+  .content.visible {
+    transform: none;
+  }
+
+  .listItem {
+    opacity: 1;
+    transform: none;
+  }
+}

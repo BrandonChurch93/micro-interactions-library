@@ -1,0 +1,198 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  width: 100%;
+}
+
+.demoArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 300px;
+}
+
+/* Bounce Button */
+.bounceButton {
+  min-width: 200px;
+  min-height: 200px;
+  padding: var(--space-6);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--duration-fast) ease;
+  user-select: none;
+}
+
+.bounceButton:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Pressed State - Squash Down */
+.bounceButton.pressed {
+  transform: scale(0.95);
+  transition: transform 100ms var(--ease-in);
+}
+
+/* Release State - Overshoot and Settle */
+.bounceButton:not(.pressed) {
+  animation: bounceRelease 350ms var(--ease-spring);
+}
+
+@keyframes bounceRelease {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.buttonText {
+  display: block;
+  pointer-events: none;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 400px;
+}
+
+.stats {
+  display: flex;
+  gap: var(--space-6);
+  width: 100%;
+  justify-content: center;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+}
+
+.statLabel {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+  transition: color var(--duration-base) ease;
+  min-width: 100px;
+  text-align: center;
+}
+
+.statValue.active {
+  color: var(--color-accent);
+}
+
+.resetButton {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-base) ease;
+}
+
+.resetButton:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-background);
+}
+
+.resetButton:active {
+  transform: scale(0.98);
+}
+
+/* Info Section */
+.info {
+  width: 100%;
+  max-width: 500px;
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.infoText {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .bounceButton {
+    min-width: 160px;
+    min-height: 160px;
+    font-size: var(--text-lg);
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .statItem {
+    width: 100%;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .bounceButton {
+    transition: none;
+    animation: none;
+  }
+
+  .bounceButton.pressed {
+    transform: scale(0.98);
+  }
+
+  .bounceButton:not(.pressed) {
+    animation: none;
+    transform: scale(1);
+  }
+
+  .bounceButton:hover {
+    transform: none;
+  }
+
+  .resetButton:active {
+    transform: none;
+  }
+}

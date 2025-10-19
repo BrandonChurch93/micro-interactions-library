@@ -1,0 +1,193 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  width: 100%;
+}
+
+.demoArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 400px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Burst Button */
+.burstButton {
+  position: relative;
+  min-width: 200px;
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: white;
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--duration-base) ease;
+  z-index: 1;
+  box-shadow: var(--shadow-lg);
+}
+
+.burstButton:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+.burstButton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.burstButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.buttonText {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Confetti Particles */
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 6px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 400px;
+}
+
+.stats {
+  display: flex;
+  gap: var(--space-6);
+  width: 100%;
+  justify-content: center;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+}
+
+.statLabel {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-accent);
+}
+
+.resetButton {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-base) ease;
+}
+
+.resetButton:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-background);
+}
+
+.resetButton:active {
+  transform: scale(0.98);
+}
+
+/* Info Section */
+.info {
+  width: 100%;
+  max-width: 500px;
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.infoText {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .demoArea {
+    min-height: 300px;
+  }
+
+  .burstButton {
+    min-width: 160px;
+    font-size: var(--text-lg);
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .statItem {
+    width: 100%;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .particle {
+    animation: none !important;
+  }
+
+  .burstButton:hover:not(:disabled) {
+    transform: none;
+  }
+
+  .burstButton:active:not(:disabled) {
+    transform: none;
+  }
+
+  .resetButton:active {
+    transform: none;
+  }
+}

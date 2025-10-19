@@ -1,0 +1,415 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(10px);
+  transition: border-color var(--duration-base) ease;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ============================================
+         ANIMATED LOGO
+         ============================================ */
+
+.logoLink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: opacity var(--duration-base) ease;
+}
+
+.logoLink:hover {
+  opacity: 0.9;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Bracket Logo Container */
+.bracketLogo {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: gap var(--duration-medium) cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logoLink:hover .bracketLogo {
+  gap: 20px;
+}
+
+/* Brackets */
+.bracket {
+  font-size: 20px;
+  font-weight: var(--font-bold);
+  color: var(--color-accent);
+  opacity: 0.9;
+  transition: all var(--duration-medium) ease;
+  filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.3));
+}
+
+.logoLink:hover .bracket {
+  opacity: 1;
+  filter: drop-shadow(0 0 16px rgba(96, 165, 250, 0.5));
+}
+
+/* Particle Container */
+.particleContainer {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Center Dot (Idle State) */
+.centerDot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  opacity: 1;
+  transition: all var(--duration-base) ease;
+}
+
+.logoLink:hover .centerDot {
+  opacity: 0;
+  transform: scale(1.2);
+}
+
+/* Particles (Hover State) */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition: all var(--duration-medium) cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Particle Animations */
+.logoLink:hover .particleUp {
+  opacity: 1;
+  transform: translateY(-12px) scale(1.2);
+  transition-delay: 0ms;
+}
+
+.logoLink:hover .particleDown {
+  opacity: 1;
+  transform: translateY(12px) scale(1.2);
+  transition-delay: 20ms;
+}
+
+.logoLink:hover .particleLeft {
+  opacity: 1;
+  transform: translateX(-16px) scale(1);
+  transition-delay: 40ms;
+}
+
+.logoLink:hover .particleRight {
+  opacity: 1;
+  transform: translateX(16px) scale(1);
+  transition-delay: 60ms;
+}
+
+.logoLink:hover .particleCenter {
+  opacity: 0.8;
+  transform: scale(1.5);
+  transition-delay: 80ms;
+}
+
+/* Logo Text */
+.logoText {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  transition: color var(--duration-base) ease;
+}
+
+/* Focus state for accessibility */
+.logoLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
+}
+
+/* ============================================
+         ELEVATED THEME TOGGLE
+         ============================================ */
+
+.themeToggle {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-base) ease;
+}
+
+.themeToggle:hover {
+  transform: scale(1.05);
+}
+
+.themeToggle:active {
+  transform: scale(0.95);
+}
+
+/* Toggle Track - Contains the sliding mechanism */
+.toggleTrack {
+  position: relative;
+  width: 64px;
+  height: 32px;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-1);
+  transition: all var(--duration-medium) ease;
+}
+
+.themeToggle:hover .toggleTrack {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Background Icons (Sun & Moon) - Updated for SVG */
+.iconSun,
+.iconMoon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3;
+  transition: opacity var(--duration-medium) ease;
+  z-index: 1;
+  pointer-events: none;
+  color: var(--color-text-secondary);
+}
+
+.iconSun svg,
+.iconMoon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.iconSun {
+  transform: translateX(2px);
+}
+
+.iconMoon {
+  transform: translateX(-2px);
+}
+
+/* Sliding Thumb */
+.toggleThumb {
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform var(--duration-medium)
+      cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    background var(--duration-medium) ease;
+  z-index: 2;
+}
+
+/* Dark mode position */
+.toggleThumbDark {
+  transform: translateX(32px) translateY(-50%);
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+}
+
+/* Icon inside the thumb */
+.thumbIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: iconPop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.thumbIcon svg {
+  width: 14px;
+  height: 14px;
+}
+
+@keyframes iconPop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* Focus styles for accessibility */
+.themeToggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+         REDUCED MOTION
+         ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .bracketLogo,
+  .bracket,
+  .centerDot,
+  .particle {
+    transition: opacity var(--duration-fast) ease !important;
+  }
+
+  .logoLink:hover .bracketLogo {
+    gap: 12px;
+  }
+
+  .logoLink:hover .particle {
+    transform: scale(1) !important;
+    opacity: 0.6 !important;
+  }
+
+  .logoLink:hover .particleUp {
+    transform: translateY(-8px) scale(1) !important;
+  }
+
+  .logoLink:hover .particleDown {
+    transform: translateY(8px) scale(1) !important;
+  }
+
+  .logoLink:hover .particleLeft {
+    transform: translateX(-12px) scale(1) !important;
+  }
+
+  .logoLink:hover .particleRight {
+    transform: translateX(12px) scale(1) !important;
+  }
+
+  .toggleThumb {
+    transition: transform var(--duration-fast) ease,
+      background var(--duration-fast) ease;
+  }
+
+  .thumbIcon {
+    animation: none;
+  }
+
+  .themeToggle:hover {
+    transform: none;
+  }
+
+  .themeToggle:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ============================================
+         RESPONSIVE
+         ============================================ */
+
+@media (max-width: 640px) {
+  .bracketLogo {
+    width: 36px;
+    height: 36px;
+    gap: 8px;
+  }
+
+  .logoLink:hover .bracketLogo {
+    gap: 14px;
+  }
+
+  .bracket {
+    font-size: 16px;
+  }
+
+  .centerDot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .particle {
+    width: 3px;
+    height: 3px;
+  }
+
+  .logoLink:hover .particleUp {
+    transform: translateY(-10px) scale(1);
+  }
+
+  .logoLink:hover .particleDown {
+    transform: translateY(10px) scale(1);
+  }
+
+  .logoLink:hover .particleLeft {
+    transform: translateX(-12px) scale(1);
+  }
+
+  .logoLink:hover .particleRight {
+    transform: translateX(12px) scale(1);
+  }
+
+  .logoText {
+    font-size: var(--text-lg);
+  }
+
+  .toggleTrack {
+    width: 56px;
+    height: 28px;
+  }
+
+  .toggleThumb {
+    width: 22px;
+    height: 22px;
+  }
+
+  .toggleThumbDark {
+    transform: translateX(28px) translateY(-50%);
+  }
+
+  .thumbIcon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .iconSun svg,
+  .iconMoon svg {
+    width: 12px;
+    height: 12px;
+  }
+}

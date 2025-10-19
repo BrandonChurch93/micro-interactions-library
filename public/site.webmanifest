@@ -1,0 +1,22 @@
+{
+  "name": "Micro-Interactions Library",
+  "short_name": "Micro-Interactions",
+  "description": "A collection of 15 beautiful, accessible, copy-paste micro-interactions for modern web applications",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ]
+}

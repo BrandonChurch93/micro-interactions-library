@@ -6,17 +6,16 @@
 export type Theme = "light" | "dark";
 
 /**
- * Get the current theme from localStorage or system preference
+ * Get the current theme from localStorage or default to dark
  */
 export function getTheme(): Theme {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
 
   const stored = localStorage.getItem("theme") as Theme | null;
   if (stored) return stored;
 
-  // Check system preference
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  return prefersDark ? "dark" : "light";
+  // Default to dark mode
+  return "dark";
 }
 
 /**
